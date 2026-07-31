@@ -1,0 +1,39 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>true</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <Sts2DataDirSuffix Condition="'$(Sts2DataDirSuffix)' == '' And '$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Windows)))' == 'true'">windows_x86_64</Sts2DataDirSuffix>
+    <Sts2DataDirSuffix Condition="'$(Sts2DataDirSuffix)' == '' And '$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::OSX)))' == 'true'">macos_arm64</Sts2DataDirSuffix>
+    <Sts2DataDirSuffix Condition="'$(Sts2DataDirSuffix)' == '' And '$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Linux)))' == 'true'">linuxbsd_x86_64</Sts2DataDirSuffix>
+    <Sts2DataDirSuffix Condition="'$(Sts2DataDirSuffix)' == '' And '$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Android)))' == 'true'">android_arm64</Sts2DataDirSuffix>
+    <Sts2DataDir Condition="'$(Sts2DataDir)' == ''">$(Sts2Dir)\data_sts2_$(Sts2DataDirSuffix)</Sts2DataDir>
+    <WorkshopContentDir>$(MSBuildThisFileDirectory)\workshop\content\</WorkshopContentDir>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="0Harmony">
+      <HintPath>$(Sts2DataDir)\0Harmony.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+
+    <Reference Include="GodotSharp">
+      <HintPath>$(Sts2DataDir)\GodotSharp.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+
+    <Reference Include="sts2">
+      <HintPath>$(Sts2DataDir)\sts2.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+
+  <Target Name="Copy Mod" AfterTargets="PostBuildEvent">
+    <Message Text="Copying mod to workshop/content/..." Importance="high" />
+    <MakeDir Directories="$(WorkshopContentDir)" />
+    <Copy SourceFiles="$(TargetPath)" DestinationFolder="$(WorkshopContentDir)" />
+    <Copy SourceFiles="$(MSBuildProjectName).json" DestinationFolder="$(WorkshopContentDir)" />
+  </Target>
+
+</Project>
