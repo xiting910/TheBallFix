@@ -3,7 +3,7 @@
   "name": "[v0.108.0 ONLY] Multiplayer Card Bugfixes: THE_BALL & Underworld",
   "author": "xiting910",
   "description": "Fixes THE_BALL owner transfer and Underworld side check bugs in v0.108.0 multiplayer. Auto-disables on v0.109.0+.",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "min_game_version": "0.108.0",
   "has_pck": false,
   "has_dll": true,

@@ -28,16 +28,17 @@ public class TheBallFixMod
     /// </summary>
     public static void Initialize()
     {
-        var gameVersion = ReleaseInfoManager.Instance.SemVer;
-        if (gameVersion is { Minor: > 108 })
+        var targetVersion = new SemanticVersion(0, 108, 0);
+        var currentVersion = ReleaseInfoManager.Instance.SemVer;
+        if (!targetVersion.Equals(currentVersion))
         {
-            Log($"游戏版本 {gameVersion} 已包含官方修复, 跳过补丁加载");
+            Log($"当前版本为 {currentVersion}, 与目标版本 {targetVersion} 不匹配, 跳过补丁加载");
             return;
         }
 
         var harmony = new Harmony(nameof(TheBallFix));
         harmony.PatchAll();
-        Log($"补丁加载完成");
+        Log("补丁加载完成");
     }
 
     /// <summary>

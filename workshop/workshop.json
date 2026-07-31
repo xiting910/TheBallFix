@@ -1,6 +1,6 @@
 ﻿{
-  "title": "[仅限 v0.108.0] 联机卡牌 Bug 修复：魔球 & 幽冥之界",
-  "description": "修复杀戮尖塔2 v0.108.0 中两张联机卡牌的两个bug。v0.109.0+ 官方已修复，本模组为仍在使用 v0.108.0 的玩家提供修复。Bug 1（魔球）：打出魔球并传递给其他玩家后，部分效果会错误地把接收方当成出牌人，导致多人游戏中的行为异常甚至数据不同步。Bug 2（幽冥之界）：幽冥之界本应只在玩家造成攻击伤害时对敌人施加灾厄，但因逻辑缺陷，敌人攻击玩家时也会触发该效果，导致玩家被错误施加灾厄。本模组仅在 v0.108.0 生效，v0.109.0 及以上版本会自动禁用。",
+  "title": "[v0.108.0 ONLY] Multiplayer Card Bugfixes: THE_BALL & Underworld",
+  "description": "Fixes two multiplayer card bugs in Slay the Spire 2 v0.108.0. Both were officially patched in v0.109.0+; this mod backports the fixes for players still on v0.108.0.\n\nBug 1 (THE_BALL): After playing THE_BALL and passing it to another player, some effects incorrectly treat the recipient as the caster, causing unexpected behavior and even desyncs in multiplayer.\n\nBug 2 (Underworld / 幽冥之界): Underworld is meant to inflict Doom on enemies only when players deal attack damage. Due to a logic flaw, enemy attacks against players also trigger the effect, wrongly applying Doom to players.\n\nThis mod only activates on v0.108.0 and automatically disables on v0.109.0 or later.\n\nGithub: https://github.com/xiting910/TheBallFix",
   "visibility": "public",
   "tags": [],
   "dependencies": []
